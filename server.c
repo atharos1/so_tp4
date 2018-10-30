@@ -73,7 +73,7 @@ int createSocket() {
     // Vincular socket al puerto
     if (setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt,
                    sizeof(opt))) {
-        perror("setsockopt");
+        perror("No se puede establecer el puerto");
         exit(EXIT_FAILURE);
     }
     address.sin_family = AF_INET;
@@ -81,11 +81,13 @@ int createSocket() {
     address.sin_port = htons(PORT);
 
     if (bind(socket_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
-        perror("bind failed");
+        perror(
+            "No se puede vincular el socket a la dirección y puerto "
+            "especificados");
         exit(EXIT_FAILURE);
     }
     if (listen(socket_fd, 3) < 0) {
-        perror("listen");
+        perror("No se puede poner el socket a la escucha");
         exit(EXIT_FAILURE);
     }
 
@@ -100,13 +102,12 @@ int main(int argc, char const *argv[]) {
     int opt = 1;
     int addrlen = sizeof(address);
     char buffer[1024] = {0};
-    char *hello = "Hello from server";
 
     server_fd = createSocket();
 
     if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
                              (socklen_t *)&addrlen)) < 0) {
-        perror("accept");
+        perror("Error aceptando la conexión entrante");
         exit(EXIT_FAILURE);
     }
 
@@ -151,6 +152,7 @@ int main(int argc, char const *argv[]) {
         "Felicitaciones, finalizaron el juego. Ahora deberán implementar el "
         "servidor que se comporte como el servidor provisto.\n");
 
+    close(new_socket);
     close(server_fd);
 
     return 0;
