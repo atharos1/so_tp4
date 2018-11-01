@@ -57,7 +57,7 @@ int main(int argc, char const *argv[]) {
     do {
         valread = read(sock, tmpBuff, 1);
         sleep(1);
-    } while (valread != -1);
+    } while (valread != -1 && valread != 0);
 
     printf("El servidor cerró la conexión.\n");
 
