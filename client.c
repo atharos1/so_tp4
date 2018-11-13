@@ -24,6 +24,8 @@ int main(int argc, char const *argv[]) {
 
     if (argc > 1 && strcmp(argv[1], "ariel") == 0) shouldWait = 1;
 
+    shouldWait = 1;
+
     struct sockaddr_in address;
     int sock = 0, valread = 0;
     struct sockaddr_in serv_addr;

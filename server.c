@@ -8,49 +8,33 @@
 
 #define clear() printf("\033[H\033[J")
 
-#define NUMQUESTIONS 9
+#define NUMQUESTIONS 5
 
-char answers[NUMQUESTIONS][50] = {
-    "entendido\n",         "#965874580*\n",
-    "connecting people\n", "me gusta el chocolate\n",
-    "ESGOLODROBO\n",       "amarillo\n",
-    "Heisenberg\n",        "indefinido\n",
-    "Colombia\n"};
+char answers[NUMQUESTIONS][50] = {"adelante\n", "Lost\n", "BRaNCa\n",
+                                  "Eco de los Andes\n", "Macri\n"};
 char questions[NUMQUESTIONS][2048] = {
-    "Bienvenidos al TP4 y felicitaciones, ya resolvieron el primer "
-    "acertijo.\nEn este TP deberán finalizar el juego que ya comenzaron "
-    "respondiendo correctamente los desafios de cada nivel. Además tendrán que "
-    "investigar otras preguntas para responder durante la defensa.\nEl desafio "
-    "final consiste en crear un servidor que se comporte igual que yo.\n\nPara "
-    "verificar que sus respuestas tienen el formato correcto respondan a este "
-    "desafio con \"entendido\\n\"",
-    "# up up left down left up right down down left *",
-    "-.-. --- -. -. . -.-. - .. -. --. / .--. . --- .--. .-.. .",
-    "Mike Echo Golf Uniform Sierra Tango Alpha Echo Lima Charlie Hotel Oscar "
-    "Charlie Oscar Lima Alpha Tango Echo",
-    "TJ ANBYDNBCJ J NBCN JLNACQRX NB \"NBOXTXMAXKX\"",
-    "#FFFF00",
-    "I AM THE ONE WHO KNOCKS",
-    "sizeof(int)",
-    "dEAtP3SAlnA"};
+    "Jelou jelou!\nÚltimo trabajito. A ver si lo hacemos como la "
+    "gente.\nEscriba \"adelante\" para continuar.",
+    "4 8 15 16 23 42", "G2P13G7P2G2P15G4P2", "7792799000011",
+    "       ,     ,       \n"
+    "       |\\.\"./|       \n"
+    "      / _   _ \\       \n"
+    "     / {|} {|} \\  _   \n"
+    "     \\==  Y  ==/ ( \\  \n"
+    "      ;-._^_.-;   ) ) \n"
+    "     /   \\_/   \\ / /  \n"
+    "     |   (_)   |/ /   \n"
+    "    /|  |   |  |\\/    \n"
+    "   | |  |   |  | |    \n"
+    "    \\|  |___|  |/     \n"
+    "     '\"\"'   '\"\"'      "};
 
 char suggestion[NUMQUESTIONS][1024] = {
-    "Cómo descubrieron el protocolo, la direccion y el puerto para conectarse?",
-    "Que diferencias hay entre TCP y UDP y en que casos conviene usar cada "
-    "uno?",
-    "El puerto que usaron para conectarse al server es el mismo que usan para "
-    "mandar las respuestas? por qué?",
-    "Qué útil abstracción es utilizada para comunicarse con sockets? se puede "
-    "utilizar read(2) y write(2) para operar?",
-    "Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?",
-    "Un servidor suele crear un nuevo proceso o thread para atender las "
-    "conexiones entrantes. Qué conviene más?",
-    "Cómo se puede implementar un servidor que atienda muchas conexiones sin "
-    "usar procesos ni threads?",
-    "Qué aplicaciones se pueden utilizar para ver el tráfico por la red. "
-    "Muestre un ejemplo.",
-    "sockets es un mecanismo de IPC. Qué es más eficiente entre sockets y "
-    "pipes?"};
+    "¿Que es peor? ¿Branca con Pepsi o 1882 con Coca?",
+    "¿Cuantos kilobytes se necesitan para almacenar la edad de Mirtha Legrand?",
+    "¿Cuántos TPs no testeados hacen falta para enloquecer a Rowda?",
+    "¿Hay algo más decadente que la puerta del Laboratorio 9?",
+    "¿Con cuanto entusiasmo le puso un 10 al grupo 1?"};
 
 void drawLevel(int level) {
     clear();
@@ -148,8 +132,8 @@ int main(int argc, char const *argv[]) {
     clear();
 
     printf(
-        "Felicitaciones, finalizaron el juego. Ahora deberán implementar el "
-        "servidor que se comporte como el servidor provisto.\n");
+        "( •_•)\n( •_•)>⌐■-■\n(⌐■_■)\n\n"
+        "Yeah.\n");
 
     close(new_socket);
     close(server_fd);
