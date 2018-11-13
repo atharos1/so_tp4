@@ -11,20 +11,21 @@ int sendSTR(int socket, char *msg) {
     return send(socket, msg, strlen(msg) + 1, 0);
 }
 
-#define NUMQUESTIONS 9
-char answers[NUMQUESTIONS][50] = {
+int NUMQUESTIONS[2] = {5, 9};
+char answers[9][50] = {
     "entendido\n",         "#965874580*\n",
     "connecting people\n", "me gusta el chocolate\n",
     "ESGOLODROBO\n",       "amarillo\n",
     "Heisenberg\n",        "indefinido\n",
     "Colombia\n"};
 
+char answersn[5][50] = {"adelante\n", "Lost\n", "BRaNCa\n",
+                                  "Eco de los Andes\n", "Macri\n"};
+
 int main(int argc, char const *argv[]) {
     int shouldWait = 0;  // SI CORRES CONTRA EL DE ARIEL PONER EN 1.
 
     if (argc > 1 && strcmp(argv[1], "ariel") == 0) shouldWait = 1;
-
-    shouldWait = 1;
 
     struct sockaddr_in address;
     int sock = 0, valread = 0;
@@ -34,6 +35,8 @@ int main(int argc, char const *argv[]) {
         printf("Error creando el socket.\n");
         exit(EXIT_FAILURE);
     }
+
+    char * answerToQuestion;
 
     memset(&serv_addr, '0', sizeof(serv_addr));
 
@@ -50,9 +53,12 @@ int main(int argc, char const *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    for (int i = 0; i < NUMQUESTIONS; i++) {
-        sendSTR(sock, answers[i]);
-        if (shouldWait) sleep(1);
+    for (int i = 0; i < NUMQUESTIONS[shouldWait]; i++) {
+        if(shouldWait) {
+            sendSTR(sock, answers[i]);
+            sleep(1);
+        } else
+            sendSTR(sock, answersn[i]);
     }
 
     char *tmpBuff;
